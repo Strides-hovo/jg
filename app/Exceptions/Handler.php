@@ -69,13 +69,13 @@ class Handler extends ExceptionHandler
     {
         if ($exception instanceof \Spatie\Permission\Exceptions\UnauthorizedException) {
             if (Route::currentRouteName() == 'admin'){
-                return redirect()->route('index');
+                return redirect()->route('login');
             }
-            if (Route::currentRouteName() == 'psixolog'){
-                return redirect()->route('index');
+            if (Route::currentRouteName() == 'manager'){
+                return redirect()->route('login');
             }
-            if (Route::currentRouteName() == 'user'){
-                return redirect()->route('index');
+            if (Route::currentRouteName() == 'user.panel'){
+                return redirect()->route('login');
             }
         }
          return parent::render($request, $exception);
