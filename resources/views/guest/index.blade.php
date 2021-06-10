@@ -16,6 +16,7 @@
     <link rel="stylesheet" type="text/css" href="{{asset('guest/css/style.css')}}">
     <link rel="stylesheet" type="text/css" href="{{asset('guest/css/loopslider.css')}}">
     <link rel="stylesheet" type="text/css" href="{{asset('guest/css/mediaqueries.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{asset('guest/css/autorizetion.css')}}">
 
     <script type='text/javascript' src='{{asset('guest/js/jquery-2.1.4.min.js')}}'></script>
     <script type='text/javascript' src='{{asset('guest/js/jquery.loopslider.min.js')}}'></script>
@@ -58,7 +59,7 @@
                 <a href="#faq">F.A.Q.</a>
             </div>
             <div class="cabinet">
-                <a href="#"><svg viewBox="0 0 16 16" fill="none" class="ico_login" xmlns="http://www.w3.org/2000/svg"><path class="ico_login_fill" d="M8.43332 6.66667C7.88332 5.11333 6.40666 4 4.66666 4C2.45666 4 0.666656 5.79 0.666656 8C0.666656 10.21 2.45666 12 4.66666 12C6.40666 12 7.88332 10.8867 8.43332 9.33333H11.3333V12H14V9.33333H15.3333V6.66667H8.43332ZM4.66666 9.33333C3.92999 9.33333 3.33332 8.73667 3.33332 8C3.33332 7.26333 3.92999 6.66667 4.66666 6.66667C5.40332 6.66667 5.99999 7.26333 5.99999 8C5.99999 8.73667 5.40332 9.33333 4.66666 9.33333Z"/></svg>Войти</a>
+                <a href="{{ route('login') }}" class="auth_btn"><svg viewBox="0 0 16 16" fill="none" class="ico_login" xmlns="http://www.w3.org/2000/svg"><path class="ico_login_fill" d="M8.43332 6.66667C7.88332 5.11333 6.40666 4 4.66666 4C2.45666 4 0.666656 5.79 0.666656 8C0.666656 10.21 2.45666 12 4.66666 12C6.40666 12 7.88332 10.8867 8.43332 9.33333H11.3333V12H14V9.33333H15.3333V6.66667H8.43332ZM4.66666 9.33333C3.92999 9.33333 3.33332 8.73667 3.33332 8C3.33332 7.26333 3.92999 6.66667 4.66666 6.66667C5.40332 6.66667 5.99999 7.26333 5.99999 8C5.99999 8.73667 5.40332 9.33333 4.66666 9.33333Z"/></svg>Войти</a>
                 <a class="reg_btn open_modal" href="#registration">Регистрация</a>
             </div>
         </div>
@@ -546,51 +547,51 @@
         <form action="{{ route('user.register') }}" method="POST">
             @csrf
             <label class="input_field">
-                <input type="text" class="reg_input" name="name">
+                <input type="text" class="reg_input @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}">
                 <div class="placeholder">Имя *</div>
             </label>
             <label class="input_field">
-                <input type="text" class="reg_input" name="email">
+                <input type="text" class="reg_input @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}">
                 <div class="placeholder">E-mail *</div>
             </label>
             <div class="mes_sub subtitle">Мессенджер для связи</div>
             <div class="messengers">
                 <label class="messenger_radio">
-                    <input type="radio" class="radio_mes" name="messenger" value="telegram">
+                    <input type="radio" class="radio_mes" name="messenger" value="telegram"{{ old('messenger') == 'telegram' ? 'checked' : '' }}>
                     <img src="{{asset('guest/images/mess_telegram.svg')}}">
                     <div class="ico"></div>
                     <div class="mess_caption">Telegram</div>
                 </label>
                 <label class="messenger_radio">
-                    <input type="radio" class="radio_mes" name="messenger" value="skype">
+                    <input type="radio" class="radio_mes" name="messenger" value="skype"{{ old('messenger') == 'skype' ? 'checked' : '' }}>
                     <img src="{{asset('guest/images/mess_skype.svg')}}">
                     <div class="ico"></div>
                     <div class="mess_caption">Skype</div>
                 </label>
                 <label class="messenger_radio">
-                    <input type="radio" class="radio_mes" name="messenger" value="viber">
+                    <input type="radio" class="radio_mes" name="messenger" value="viber"{{ old('messenger') == 'viber' ? 'checked' : '' }}>
                     <img src="{{asset('guest/images/mess_viber.svg')}}">
                     <div class="ico"></div>
                     <div class="mess_caption">Viber</div>
                 </label>
                 <label class="messenger_radio">
-                    <input type="radio" class="radio_mes" name="messenger" value="whatsapp">
+                    <input type="radio" class="radio_mes" name="messenger" value="whatsapp"{{ old('messenger') == 'whatsapp' ? 'checked' : '' }}>
                     <img src="{{asset('guest/images/mess_whatsapp.svg')}}">
                     <div class="ico"></div>
                     <div class="mess_caption">WhatsApp</div>
                 </label>
             </div>
             <label class="input_field">
-                <input type="text" class="reg_input" name="messenger_login">
+                <input type="text" class="reg_input @error('messenger_login') is-invalid @enderror" name="messenger_login" value="{{ old('messenger_login') }}">
                 <div class="placeholder">Логин / Тел. в мессенджере *</div>
             </label>
             <label class="check_field"> 
-                <input type="checkbox" class="accept_check" name="accept">
+                <input type="checkbox" class="accept_check @error('accept') is-invalid @enderror" name="accept"{{ old('accept') ? 'checked' : '' }}>
                 <div class="check"></div>
                 <span class="check_text">Я согласен с <a href="#">правилами и условиями</a></span>
             </label>
             <div class="invalid_text">Пожалуйста, заполните все обязательные поля</div>
-            <button id="register_submit" class="submit">Зарегистрироваться</button>
+            <button id="register_submit" class="submit" type="submit">Зарегистрироваться</button>
         </form>
     </div>
     <div id="register_success">
@@ -599,6 +600,38 @@
         УСПЕШНО ОТПРАВЛЕНА!
     </div>
 </div>
+{{-- <div class="modal" id="auth">
+    <div class="modal_overlay"></div>
+    <div class="form-group">
+        <form action="{{ route('login') }}" method="POST">
+            @csrf
+            <div class="title"><img src="{{ asset('guest/images/key.png') }} " alt=""><h3>Авторизация</h3></div>
+            <div class="field">
+                <label for="">Email адрес</label>
+                <input type="email" placeholder="yourmail@gmail.com" name="email">
+            </div>
+            <div class="field">
+                <label for="">Пароль</label>
+                <input type="password" placeholder="******" name="password"> 
+            </div>
+            <div class="field remember">
+                <label >
+                    <input type="checkbox">Запомнить меня
+                </label>
+                <a href="">Забыли пароль?</a>
+            </div>
+            <button type="submit">Авторизоваться</button>
+            <div class="registr">
+                <span>Не зарегистрированы?</span>
+                <a href="">Пройти регистрацию</a>
+            </div>
+        </form>
+        <div class="block">
+            <p>Добро пожаловать в</p>
+            <h3>JoinGambling</h3>
+        </div>
+    </div>
+</div> --}}
 <div id="preloader_wraper">
     <div class="preloader_content">
         <video class="preloader" loop muted autoplay playsinline>

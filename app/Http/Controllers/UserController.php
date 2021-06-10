@@ -108,7 +108,7 @@ class UserController extends Controller
 
 
 
-
+ 
 
     public function create(Request $request)
     {
@@ -122,8 +122,8 @@ class UserController extends Controller
             'password.required' => 'Пароль Обязательное поле',
             'password.confirmed' => 'Пароли не совпадают',
             'accept.required' => 'Подтвердите правилами и условиями',
-
         ];
+        // dd($request);
 
         $this->validate(request(), [
             'name' => 'required',
@@ -142,6 +142,7 @@ class UserController extends Controller
             'messenger' => $request->messenger,
             'messenger_login' => $request->messenger_login,
         ];
+        
         Notification::route('telegram', '1424323861')
             ->notify(new Telegram($details));
 

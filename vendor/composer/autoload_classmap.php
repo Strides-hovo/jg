@@ -31,6 +31,7 @@ return array(
     'App\\Mail\\SendMail' => $baseDir . '/app/Mail/SendMail.php',
     'App\\Models\\User' => $baseDir . '/app/Models/User.php',
     'App\\Models\\UserBlack' => $baseDir . '/app/Models/UserBlack.php',
+    'App\\Notifications\\PasswordReset' => $baseDir . '/app/Notifications/PasswordReset.php',
     'App\\Notifications\\Telegram' => $baseDir . '/app/Notifications/Telegram.php',
     'App\\Providers\\AppServiceProvider' => $baseDir . '/app/Providers/AppServiceProvider.php',
     'App\\Providers\\AuthServiceProvider' => $baseDir . '/app/Providers/AuthServiceProvider.php',

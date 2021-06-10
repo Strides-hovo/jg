@@ -525,3 +525,5 @@ FORM[data-state="success"] .message.success	{ display:block; }
 .modal .modal_content .input_wrapper	{ position:relative; margin-bottom:30px; }
 .modal .modal_content .input_wrapper INPUT[type="text"]	{ padding-right:50px; }
 .modal .modal_content .input_wrapper .cur	{ position:absolute; right:15px; top:50%; transform:translateY(-50%); font-weight:bold; }
+
+

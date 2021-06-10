@@ -1,13 +1,13 @@
 <?php
 
-namespace {{ namespace }};
+namespace App\Notifications;
 
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Notifications\Notification;
 
-class {{ class }} extends Notification
+class PasswordReset extends Notification
 {
     use Queueable;
 
@@ -16,9 +16,13 @@ class {{ class }} extends Notification
      *
      * @return void
      */
-    public function __construct()
+
+    public $token;
+
+
+    public function __construct($token)
     {
-        //
+        $this->token = $token;
     }
 
     /**
@@ -40,12 +44,17 @@ class {{ class }} extends Notification
      */
     public function toMail($notifiable)
     {
-        return (new MailMessage)->markdown('DummyView');
+         return (new MailMessage)
+         ->greeting('Привет!')
+
+        ->line('Вы получили это письмо, потому что мы получили запрос на сброс пароля для вашей учетной записи.') 
+        ->action('Сброс пароля', url('password/reset', $this->token))
+        ->line('Если вы не запрашивали сброс пароля, никаких дальнейших действий не требуется.');
     }
 
     /**
      * Get the array representation of the notification.
-     *
+     *'trouble-clicking' => 'If you’re having trouble clicking the ":actionText" button, copy and paste the URL below into your web browser:',
      * @param  mixed  $notifiable
      * @return array
      */

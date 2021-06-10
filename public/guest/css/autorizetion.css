@@ -1,0 +1,451 @@
+@font-face {
+	font-family: 'Roboto';
+	src: url('../../fonts/Roboto-Light.woff') format('woff');
+	font-weight: 300;
+	font-style: normal;
+	font-display: swap;
+}
+
+@font-face {
+	font-family: 'Roboto';
+	src: url('../../fonts/Roboto-Regular.woff') format('woff');
+	font-weight: normal;
+	font-style: normal;
+	font-display: swap;
+}
+
+@font-face {
+	font-family: 'Roboto';
+	src: url('../../fonts/Roboto-Medium.woff') format('woff');
+	font-weight: 500;
+	font-style: normal;
+	font-display: swap;
+}
+
+@font-face {
+	font-family: 'Roboto';
+	src: url('../../fonts/Roboto-Bold.woff') format('woff');
+	font-weight: bold;
+	font-style: normal;
+	font-display: swap;
+}
+
+@font-face {
+	font-family: 'Roboto';
+	src: url('../../fonts/Roboto-Black.woff') format('woff');
+	font-weight: 900;
+	font-style: normal;
+	font-display: swap;
+}
+ 
+.form-group {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    width: 54%;
+    margin:160px auto;
+    background: #fff;
+    position: relative;
+} 
+ 
+
+ .form-group form{
+ 	padding: 53px 50px 50px;
+    box-sizing: border-box;
+    width: 50%;
+        display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+ }
+
+
+ .form-group form input[type="text"],
+ .form-group form input[type="email"],
+  .form-group form input[type="password"] {
+    width: 100%;
+    border: 2px solid #DFE0EB;
+    box-sizing: border-box;
+    border-radius: 9px;
+    padding: 15px 20px;
+    outline: none;
+}
+
+
+.form-group form .title {
+    display: flex;
+    align-items: center;
+}
+
+.form-group form .title img{
+	background: #FBED10;
+	border-radius: 9px;
+	padding: 18px;
+}
+
+.form-group form .title h3{
+    margin-left: 20px;
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 36px;
+    line-height: 42px;
+    color: #222222;
+}
+
+
+.form-group form  label,.form-group form a{
+	font-family: Roboto;
+	font-style: normal;
+	font-weight: 500;
+	font-size: 18px;
+	line-height: 21px;
+	color: #9FA2B4;
+}
+.form-group form  label{
+	display: block;
+	margin-bottom: 10px;
+}
+
+.form-group form button[type="submit"]{
+	background: #1A1A26;
+    border-radius: 30px;
+    width: 100%;
+    color: #FBED10;
+    padding: 18px;
+    font-weight: 900;
+    font-size: 14px;
+    line-height: 18px;
+    cursor: pointer;
+}
+
+
+.form-group form .registr,.remember{
+	font-weight: 500;
+	font-size: 18px;
+	line-height: 21px;
+	color: #9FA2B4;
+	display: flex;
+	align-items: center;
+	 justify-content: space-between;
+}
+
+
+.form-group form .registr a{
+	font-weight: 500;
+	font-size: 18px;
+	line-height: 21px;
+	color: #9FA2B4;
+	   
+}
+
+
+.form-group form .field input::placeholder {
+    font-weight: 500;
+	font-size: 18px;
+	line-height: 21px;
+	color: #9FA2B4;	
+}
+
+
+
+/*block*/
+
+
+.form-group .block{
+	background: linear-gradient(180deg, rgba(10, 80, 112, 0.5) 0%, rgba(15, 197, 255, 0.5) 81.25%, rgba(13, 151, 199, 0.5) 93.75%);
+	border-radius: 0px 9px 9px 0px;
+	background-image: url('../images/card.png');
+	    width: 500px;
+    height: 600px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 70px 50px;
+    box-sizing: border-box;
+}
+
+
+.form-group .block h3{
+	font-family: Roboto;
+	font-size: 48px;
+	font-style: normal;
+	font-weight: 700;
+	line-height: 56px;
+	letter-spacing: 0em;
+	text-align: center;
+	color: #FFFFFF;
+	margin: 0;
+}
+
+
+.form-group .block p{
+	font-family: Roboto;
+	font-style: normal;
+	font-weight: bold;
+	font-size: 18px;
+	line-height: 21px;
+	text-align: center;
+	color: #FFFFFF;
+	margin: 0;
+}
+
+
+
+@media screen and (max-width: 1851px){
+	.form-group form{
+		padding: 53px 0;
+	}
+	.form-group form .field {
+    	margin: 10px 0;
+	}
+	.form-group form .registr{
+		margin-top: 20px
+	}
+}
+
+
+
+@media screen and (max-width: 1440px){
+	.form-group form {
+	    width: 60%;
+	}
+}
+
+@media screen and (max-width: 1024px){
+	.form-group form {
+	    width: 85%;
+	}
+}
+
+@media screen and (max-width: 425px){
+	.form-group  {
+	    width: 100%;
+	}
+	.form-group form .registr,.form-group form .registr a{
+		font-size: 15px
+	}
+}
+
+
+
+/*reset*/
+.is-invalid{
+	border:  1px solid red !important;
+}
+
+.reset{
+	margin: auto;
+	width: 550px;
+}
+
+.reset form{
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	padding: 50px;
+	box-sizing: border-box;
+	background: #FFFFFF;
+	border-radius: 9px;
+}
+
+
+
+
+.reset form h3{
+	font-family: Roboto;
+	font-size: 36px;
+	font-style: normal;
+	font-weight: 700;
+	line-height: 42px;
+	letter-spacing: 0em;
+	text-align: center;
+	color: #222222;
+	margin: 0;
+}
+
+
+.reset form p{
+	margin: 50px 0;
+	font-family: Roboto;
+	font-style: normal;
+	font-weight: 500;
+	font-size: 18px;
+	line-height: 21px;
+	display: flex;
+	align-items: center;
+	text-align: center;
+	letter-spacing: 0.4px;
+	color: #9FA2B4;
+}
+
+
+.reset form label{
+	align-self: flex-start;
+	margin-bottom: 10px;
+	font-family: Roboto;
+	font-style: normal;
+	font-weight: 500;
+	font-size: 18px;
+	line-height: 21px;
+	color: #9FA2B4;
+}
+
+
+
+
+
+.reset form button{
+    font-family: Roboto;
+    font-weight: 900;
+    font-size: 14px;
+    text-align: center;
+    text-transform: uppercase;
+    color: #FBED10;
+    background: #1A1A26;
+    border-radius: 30px;
+    width: 100%;
+    padding: 18px;
+    outline: none;
+    border: none;
+    cursor: pointer;
+}
+
+
+
+.reset form .email,.reset form .password{
+	    width: 100%;
+    border: 2px solid #DFE0EB;
+    box-sizing: border-box;
+    border-radius: 9px;
+    padding: 15px;
+    outline: none;
+    margin-bottom: 40px;
+    padding-left: 20px;
+}
+
+
+.reset form .email::placeholder{
+	font-family: Roboto;
+	font-style: normal;
+	font-weight: 500;
+	font-size: 18px;
+	line-height: 21px;
+	color: #9FA2B4;
+}
+
+
+/*modal success*/
+
+.modal-success{
+	display: none;
+}
+
+.modal-success.active {
+    position: relative;
+    display: block;
+}
+
+
+.modal_overlay {
+    position: absolute;
+    background: #eee;
+    width: 100%;
+    height: 100vh;
+}
+
+
+.modal-success .info{
+    width: 450px;
+    margin: auto;
+    position: fixed;
+    z-index: 9;
+    background: #fff;
+    border-radius: 9px;
+    left: 0;
+    right: 0;
+    top: 25%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 54px 30px 30px;
+}
+
+
+
+.modal-success .info .close{
+	background-image: url('../images/close.png');
+	background-repeat: no-repeat;
+	cursor: pointer;
+    width: 20px;
+    height: 20px;
+    position: absolute;
+    right: 12px;
+    top: 12px;
+}
+
+
+.modal-success .info .success{
+	border: 3px solid rgba(94, 183, 95, 0.2);
+	box-sizing: border-box;
+	border-radius: 50%;
+    padding: 19px 15px;
+}
+
+
+
+
+.modal-success .info h4{
+	font-family: Roboto;
+	font-style: normal;
+	font-weight: bold;
+	font-size: 24px;
+	line-height: 28px;
+	display: flex;
+	align-items: center;
+	text-align: center;
+	letter-spacing: 0.4px;
+	color: #222222;
+	margin: 24px 0 0;
+}
+
+
+
+.modal-success .info p{
+	font-family: Roboto;
+	font-style: normal;
+	font-weight: 500;
+	font-size: 16px;
+	line-height: 19px;
+	display: flex;
+	align-items: center;
+	text-align: center;
+	letter-spacing: 0.4px;
+	color: #9FA2B4;
+    padding: 30px 0;
+    margin: 0;
+}
+
+
+.modal-success .info button{
+	    background: #F3F4F6;
+    border-radius: 30px;
+    width: 100%;
+    padding: 18px;
+    border: none;
+    outline: none;
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: 900;
+    font-size: 14px;
+    line-height: 18px;
+    text-align: center;
+    text-transform: uppercase;
+    color: #222222;
+    cursor: pointer;
+}
+
+
+
+
+

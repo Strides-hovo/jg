@@ -64,7 +64,7 @@ document.addEventListener("DOMContentLoaded", function(){
 	
 	var submitDisable = true;
 	var pattern = /^([a-z0-9_\.-])+@[a-z0-9-]+\.([a-z]{2,4}\.)?[a-z]{2,6}$/i;
-	document.querySelector("#register_submit").addEventListener("click", function(){
+/*	document.querySelector("#register_submit").addEventListener("click", function(){
 		if (document.querySelector(".reg_input[name='name']").value == "") document.querySelector(".reg_input[name='name']").classList.add("invalid");
 		else document.querySelector(".reg_input[name='name']").classList.remove("invalid");
 		if (document.querySelector(".reg_input[name='email']").value == "") document.querySelector(".reg_input[name='email']").classList.add("invalid");
@@ -103,5 +103,17 @@ document.addEventListener("DOMContentLoaded", function(){
 				}
 			});
 		}
-	});
+	});*/
+	if (location.hash == '#registration') {
+		$('#modal_registration').addClass('active')
+		location.hash = "";
+	};
+
+	
+	
+
 });
+
+
+
+

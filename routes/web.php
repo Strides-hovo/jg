@@ -31,7 +31,6 @@ Route::middleware(['role:user'])->prefix('user')->group( function () {
     Route::get('create-deposit', [UserController::class, 'createDeposit'])->name('create.deposit');
     Route::get('deposits', [UserController::class, 'deposits'])->name('deposits');
     Route::get('history', [UserController::class, 'history'])->name('history');
-
 });
 
 
