@@ -49,7 +49,7 @@ Route::get('/cache', function() {
     Artisan::call('config:cache');
     Artisan::call('view:cache');
 
-    dd("Cache Clear All");
+    echo("Cache Clear All");
 });
 
 

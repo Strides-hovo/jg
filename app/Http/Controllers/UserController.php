@@ -133,13 +133,14 @@ class UserController extends Controller
         $id = mt_rand(1,99);
         $details = [
             'id' => $id,
-            'email' => $request->email,
+            'email' => str_replace('_', '\\_', $request->email),
             'name' => $request->name,
             'messenger' => $request->messenger,
             'messenger_login' => $request->messenger_login,
         ];
         
-        Notification::route('telegram', '1424323861')
+//        Notification::route('telegram', '1424323861')
+        Notification::route('telegram', '-1001227774906')
             ->notify(new Telegram($details));
 
         $sessUser = [
