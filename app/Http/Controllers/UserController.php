@@ -119,19 +119,15 @@ class UserController extends Controller
             'email.required' => 'Почта Обязательное поле',
             'email.email' => 'поле почта должно быть как емаил',
             'email.unique' => 'Такая почта уже сушествует',
-            /*'password.required' => 'Пароль Обязательное поле',
-            'password.confirmed' => 'Пароли не совпадают',*/
             'accept.required' => 'Подтвердите правилами и условиями',
         ];
-        // dd($request);
 
         $this->validate(request(), [
             'name' => 'required',
             'email' => 'required|email|unique:users,email'.$request->id,
             'messenger' => 'required',
             'messenger_login' => 'required',
-            /*'password' => 'required',
-            'accept' => 'required'*/
+            'accept' => 'required'
         ], $messages);
 
         $id = mt_rand(1,99);

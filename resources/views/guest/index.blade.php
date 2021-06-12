@@ -547,12 +547,12 @@
         <form action="{{ route('user.register') }}" method="POST">
             @csrf
             <label class="input_field">
-                <input type="text" class="reg_input @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}">
-                <div class="placeholder">Имя *</div>
+                <input type="text" class="reg_input @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" placeholder="Имя *">
+                {{-- <div class="placeholder"></div> --}}
             </label>
             <label class="input_field">
-                <input type="text" class="reg_input @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}">
-                <div class="placeholder">E-mail *</div>
+                <input type="text" class="reg_input @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" placeholder="E-mail *">
+                
             </label>
             <div class="mes_sub subtitle">Мессенджер для связи</div>
             <div class="messengers">
@@ -582,12 +582,12 @@
                 </label>
             </div>
             <label class="input_field">
-                <input type="text" class="reg_input @error('messenger_login') is-invalid @enderror" name="messenger_login" value="{{ old('messenger_login') }}">
-                <div class="placeholder">Логин / Тел. в мессенджере *</div>
+                <input type="text" class="reg_input @error('messenger_login') is-invalid @enderror" name="messenger_login" value="{{ old('messenger_login') }}" placeholder="Логин / Тел. в мессенджере *">
+                
             </label>
             <label class="check_field"> 
-                <input type="checkbox" class="accept_check @error('accept') is-invalid @enderror" name="accept"{{ old('accept') ? 'checked' : '' }}>
-                <div class="check"></div>
+                <input type="checkbox" class="accept_check" name="accept"{{ old('accept') ? 'checked' : '' }}>
+                <div class="check @error('accept') is-invalid @enderror"></div>
                 <span class="check_text">Я согласен с <a href="#">правилами и условиями</a></span>
             </label>
             <div class="invalid_text">Пожалуйста, заполните все обязательные поля</div>
