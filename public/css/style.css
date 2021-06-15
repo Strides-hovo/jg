@@ -527,3 +527,28 @@ FORM[data-state="success"] .message.success	{ display:block; }
 .modal .modal_content .input_wrapper .cur	{ position:absolute; right:15px; top:50%; transform:translateY(-50%); font-weight:bold; }
 
 
+#result .modal_content{
+	border: 1px solid;
+	padding: 20px;
+}
+
+#result .modal_content p{
+	margin: 10px 0;
+	line-height: 1.5;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

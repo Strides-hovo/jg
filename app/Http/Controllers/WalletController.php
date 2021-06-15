@@ -18,25 +18,32 @@ class WalletController extends Controller
 
         switch ($cod->cod){
             case 'eth':
-                $key = 'd67c804843-29ecf1b13d-86596c9b53-76b530ce75';
-                $url = 'https://etherapi.net/api/v2/';
-                $from = '0x995Ae2aDbd02d8F202be84550FF08D8830d49Ff4';
-
+                $key = 'eff6fac20c-0b9e7bef48-a4274e5742-264342f418';
 
                 $ch1 = curl_init();
-                $ch2 = curl_init();
                 curl_setopt($ch1, CURLOPT_URL, 'https://etherapi.net/api/v2/.give?key='.$key);
                 curl_setopt($ch1, CURLOPT_RETURNTRANSFER, 1);
                 $address = curl_exec($ch1);
                 curl_close($ch1);
+                $address = json_decode($address,1);
+                $address['amount'] = $request->amount;
 
-                $u = 'https://etherapi.net/api/v2/.send?key='. $key .'&address='.$address .'&amount=0.0035';
+                if ( key_exists('result',$address)  ){
+                    DB::table('orders')
+                        ->insert(
+                            [
+                                'created_at'    => date('Y-m-d H:i:s'),
+                                'user_id'       => Auth::user()->id,
+                                'to'            => "$address[result]",
+                                'cost'          => $request->amount,
+                                'action'        => 'add'
+                            ]
+                        );
 
-                curl_setopt($ch2, CURLOPT_URL, $u);
-                curl_setopt($ch2, CURLOPT_RETURNTRANSFER, 1);
-                $res = curl_exec($ch2);
-                dd( $res );
-                echo 'eth';
+                }
+
+            exit(json_encode($address) );
+
             break;
             case 'btc':
                 echo 'btc';

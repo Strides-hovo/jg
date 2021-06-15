@@ -76,6 +76,7 @@
         <form action="{{route('payment.insert')}}" method="post">
             @csrf
             <input type="hidden" id="payment_hidden" name="payment" value="">
+
             <div class="input_caption">Сумма пополнения</div>
             <div class="input_wrapper">
                 <input type="text" required id="pay" name="amount" class="num_input">
@@ -84,9 +85,47 @@
             <div class="message invalid">Пожалуйста, заполните все обязательные поля</div>
             <div class="message success">Баланс пополнен</div>
             <div class="message error">Ошибка</div>
+            <div class="info"></div>
             <input type="submit" class="submit_btn" value="ПОПОЛНИТЬ БАЛАНС">
         </form>
         <div class="modal_close"></div>
     </div>
 </div>
+    <div class="modal" id="result">
+
+        <div class="modal_content">
+            <div class="modal_close"></div>
+            <div class="s"></div>
+        </div>
+    </div>
 @endsection
+
+@section('script')
+    <script src="{{asset('js/custom.js')}}"></script>
+    <script>
+        const btn = document.querySelector('.submit_btn');
+        const form = document.querySelector('#payment_modal');
+        const result = document.querySelector('#result');
+        const field = document.querySelector('#result .s');
+        btn.onclick = function(e){
+            e.preventDefault();
+            let amount = document.querySelector('input[name=amount]').value;
+            postData('POST', "{{route('payment.insert')}}", {
+                amount: amount,
+                payment: 'eth',
+                '_token' : "{{ csrf_token() }}"
+            }).then((data) => {
+                let text = `<p>Пожалуйста , сделайте перевод на след. данные , после 3 подтверждений в сети Ethereum
+                                Ваш баланс будет автоматически пополнен!</p>`;
+                text += `<p>К оплате: ${data.amount} ETH</p>`;
+                text += `<p>Адрес: ${data.result}</p>`;
+                field.innerHTML = text;
+                form.classList.remove('active');
+                result.classList.add('active');
+                    console.log( result );
+             });
+        };
+
+
+    </script>
+    @endsection
