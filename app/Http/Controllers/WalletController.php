@@ -46,7 +46,7 @@ class WalletController extends Controller
                     exit(json_encode( $address ));
                     break;
                 case 'btc':
-                    $key = '04aa9bd6c9-cbd098a9a6-291a2c58b9-a33aa1fb54';
+                    $key = 'c7df5f2204-3633c4c456-fb3d7d6e93-ef5c61a3aa';
                     $ch1 = curl_init();
                     curl_setopt($ch1, CURLOPT_URL, 'https://cryptocurrencyapi.net/api/.give?key='. $key . '&currency=BTC');
                     curl_setopt($ch1, CURLOPT_RETURNTRANSFER, 1);
