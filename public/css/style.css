@@ -530,6 +530,7 @@ FORM[data-state="success"] .message.success	{ display:block; }
 #result .modal_content{
 	border: 1px solid;
 	padding: 20px;
+	user-select: all;
 }
 
 #result .modal_content p{

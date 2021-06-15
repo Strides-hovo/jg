@@ -24,7 +24,7 @@
                     <img class="pict" src="{{asset('images/pay_bitcoin.svg')}}">
                     <div class="subname">Bitcoin (BTC)</div>
                     <div class="fee">Комиссия: 0%</div>
-                    <div class="add_btn" data-payment="BTC" data-cur="BTC">Пополнить через BTC</div>
+                    <div class="add_btn" data-payment="btc" data-cur="BTC">Пополнить через BTC</div>
                 </div>
             </div>
             <div class="wrapper_1_3">
@@ -107,22 +107,30 @@
         const form = document.querySelector('#payment_modal');
         const result = document.querySelector('#result');
         const field = document.querySelector('#result .s');
+
+
         btn.onclick = function(e){
             e.preventDefault();
             let amount = document.querySelector('input[name=amount]').value;
+
             postData('POST', "{{route('payment.insert')}}", {
                 amount: amount,
-                payment: 'eth',
+                payment: document.querySelector('#payment_hidden').value,
                 '_token' : "{{ csrf_token() }}"
             }).then((data) => {
-                let text = `<p>Пожалуйста , сделайте перевод на след. данные , после 3 подтверждений в сети Ethereum
+                let text;
+                if (data.result ){
+                     text = `<p>Пожалуйста , сделайте перевод на след. данные , после 3 подтверждений в сети Ethereum
                                 Ваш баланс будет автоматически пополнен!</p>`;
-                text += `<p>К оплате: ${data.amount} ETH</p>`;
-                text += `<p>Адрес: ${data.result}</p>`;
+                    text += `<p>К оплате: ${data.amount} ETH</p>`;
+                    text += `<p>Адрес: ${data.result}</p>`;
+                }
+                else{
+                    text = `<p>Ошибка попробуйте позже</p>`;
+                }
                 field.innerHTML = text;
                 form.classList.remove('active');
                 result.classList.add('active');
-                    console.log( result );
              });
         };
 
