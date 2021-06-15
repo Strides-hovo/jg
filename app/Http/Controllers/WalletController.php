@@ -15,7 +15,9 @@ class WalletController extends Controller
     {
         $cod = DB::table('currency')->where('cod',$request->payment)->first();
 //        $login = DB::table('wallet_info')->select($cod->cod)->where('user_id',Auth::user()->id)->first();
-        if (is_object($cod)   ){
+
+
+        if ( is_object($cod) ){
             switch ($cod->cod){
                 case 'eth':
                     $key = 'eff6fac20c-0b9e7bef48-a4274e5742-264342f418';
@@ -33,6 +35,7 @@ class WalletController extends Controller
                                 [
                                     'created_at'    => date('Y-m-d H:i:s'),
                                     'user_id'       => Auth::user()->id,
+                                    'currency_id'  => $cod->id,
                                     'to'            => "$address[result]",
                                     'cost'          => $request->amount,
                                     'action'        => 'add'
@@ -43,7 +46,32 @@ class WalletController extends Controller
                     exit(json_encode( $address ));
                     break;
                 case 'btc':
-                    echo 'btc';
+                    $key = '04aa9bd6c9-cbd098a9a6-291a2c58b9-a33aa1fb54';
+                    $ch1 = curl_init();
+                    curl_setopt($ch1, CURLOPT_URL, 'https://cryptocurrencyapi.net/api/.give?key='. $key . '&currency=BTC');
+                    curl_setopt($ch1, CURLOPT_RETURNTRANSFER, 1);
+                    $address = curl_exec($ch1);
+                    curl_close($ch1);
+                    $address = json_decode($address,1);
+                    $address['amount'] = $request->amount;
+//dd($address);
+                    if ( key_exists('result',$address)  ){
+                        DB::table('orders')
+                            ->insert(
+                                [
+                                    'created_at'    => date('Y-m-d H:i:s'),
+                                    'user_id'       => Auth::user()->id,
+                                    'currency_id'  => $cod->id,
+                                    'to'            => "$address[result]",
+                                    'cost'          => $request->amount,
+                                    'action'        => 'add'
+                                ]
+                            );
+
+                    }
+                    exit(json_encode( $address ));
+
+
                     break;
             }
         }

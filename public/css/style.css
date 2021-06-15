@@ -530,7 +530,7 @@ FORM[data-state="success"] .message.success	{ display:block; }
 #result .modal_content{
 	border: 1px solid;
 	padding: 20px;
-	user-select: all;
+	user-select: text;
 }
 
 #result .modal_content p{
@@ -538,7 +538,9 @@ FORM[data-state="success"] .message.success	{ display:block; }
 	line-height: 1.5;
 }
 
-
+.upper{
+	text-transform: uppercase;
+}
 
 
 

@@ -112,6 +112,8 @@
         btn.onclick = function(e){
             e.preventDefault();
             let amount = document.querySelector('input[name=amount]').value;
+            const t = this;
+            const payment = this.parentElement.querySelector('input[name=payment]').value;
 
             postData('POST', "{{route('payment.insert')}}", {
                 amount: amount,
@@ -120,9 +122,8 @@
             }).then((data) => {
                 let text;
                 if (data.result ){
-                     text = `<p>Пожалуйста , сделайте перевод на след. данные , после 3 подтверждений в сети Ethereum
-                                Ваш баланс будет автоматически пополнен!</p>`;
-                    text += `<p>К оплате: ${data.amount} ETH</p>`;
+                     text = `<p>Пожалуйста , Сделайте оплату по след. данным!</p>`;
+                    text += `<p>К оплате: ${data.amount} <span class="upper">${payment}</span></p>`;
                     text += `<p>Адрес: ${data.result}</p>`;
                 }
                 else{
@@ -132,8 +133,9 @@
                 form.classList.remove('active');
                 result.classList.add('active');
              });
+
         };
 
-
     </script>
+
     @endsection
