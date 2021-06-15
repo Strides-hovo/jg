@@ -4,8 +4,11 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use App\Models\UserBlack;
+use App\Models\Wallet;
+use App\Models\WalletInfo;
 use App\Notifications\Telegram;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Notification;
@@ -84,18 +87,29 @@ class UserController extends Controller
     }
 
 
-
-
-
-
-
+    /**
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
+     * show id from all wallets
+     */
     public function wallets()
     {
-        return view('user.finances.wallets');
+        $wallet_info = WalletInfo::where('user_id',Auth::user()->id)->first();
+
+        return view('user.finances.wallets',compact('wallet_info'));
     }
 
 
-
+    public function walletUpdate(Request $request, WalletInfo $wallet_info)
+    {
+        $wallet_info->user_id = Auth::user()->id;
+        $wallet_info->PerfectMoney_USD = $request->PerfectMoney_USD;
+        $wallet_info->PerfectMoney_EUR = $request->PerfectMoney_EUR;
+        $wallet_info->Ethereum = $request->Ethereum;
+        $wallet_info->Tether = $request->Tether;
+        $wallet_info->Bitcion = $request->Bitcion;
+        $wallet_info->save();
+        return redirect()->back()->withSuccess('Данние успешно сохронилис');
+    }
 
 
 
@@ -179,6 +193,12 @@ class UserController extends Controller
                     'messenger_login' => $telegram['messenger_login'],
                 ]);
                 $user->assignRole('user');
+
+                $wallet = new Wallet;
+                $wallet->user_id = $user->id;
+                $wallet->save();
+
+
                 $message = [
                     'email' => $telegram['email'],
                     'subject' => 'Регистрация в Сайте Jg',

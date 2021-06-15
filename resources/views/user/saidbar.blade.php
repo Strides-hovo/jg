@@ -46,7 +46,7 @@
 					<svg class="ico" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M16 10H3V12H16V10ZM16 6H3V8H16V6ZM3 16H8V14H3V16ZM19.5 11.5L21 13L14.005 20L9.5 15.5L11 14L14.005 17L19.5 11.5Z"/></svg>
 					<span class="txt">Операции</span>
 				</a></li>
-				<li class="menu_item">
+				<li class="menu_item {{ Request::is('user/wallets') || Request::is('user/transfer') || Request::is('user/transfer.out') ? 'active' : '' }}">
 					<svg class="ico" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M19.2 5H4.8C3.8055 5 3.009 5.78312 3.009 6.75L3 17.25C3 18.2169 3.8055 19 4.8 19H19.2C20.1945 19 21 18.2169 21 17.25V6.75C21 5.78312 20.1945 5 19.2 5ZM19.2 17.25H4.8V12H19.2V17.25ZM19.2 9.375H4.8V6.75H19.2V9.375Z"/></svg>
 					<span class="txt">Финансы</span>
 					<ul class="submenu">

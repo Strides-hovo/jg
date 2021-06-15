@@ -12,37 +12,38 @@
                 <div class="caption_wrapper">
                     <div class="caption">Кошельки для вывода средств</div>
                 </div>
-                <form class="wallets_form" action="savewallets">
+                <form class="wallets_form" action="{{ route('wallets.update',$wallet_info )}}" method="post">
+                    @csrf
                     <div class="row cols clearfix">
                         <div class="col">
                             <div class="input_caption">Кошелёк PerfectMoney USD</div>
                             <div class="input_wrapper">
-                                <input name="pmusd" placeholder="U00000000" type="text" class="">
+                                <input name="PerfectMoney_USD" placeholder="U00000000" type="text" value="{{ $wallet_info['PerfectMoney_USD'] ?? '' }}">
                             </div>
                         </div>
                         <div class="col">
                             <div class="input_caption">Кошелек PerfectMoney EUR</div>
                             <div class="input_wrapper">
-                                <input name="pmeur" placeholder="E00000000" type="text" class="">
+                                <input name="PerfectMoney_EUR" placeholder="E00000000" type="text" value="{{ $wallet_info['PerfectMoney_EUR'] ?? '' }}">
                             </div>
                         </div>
                     </div>
                     <div class="row">
                         <div class="input_caption">Кошелек Ethereum (ETH)</div>
                         <div class="input_wrapper">
-                            <input name="etr" placeholder="0x" type="text" class="">
+                            <input name="Ethereum" placeholder="0x" type="text" value="{{ $wallet_info['Ethereum'] ?? '' }}">
                         </div>
                     </div>
                     <div class="row">
                         <div class="input_caption">Кошелёк Tether (USDT)</div>
                         <div class="input_wrapper">
-                            <input name="usdt" type="text" class="">
+                            <input name="Tether" type="text" value="{{ $wallet_info['Tether'] ?? '' }}">
                         </div>
                     </div>
                     <div class="row">
                         <div class="input_caption">Кошелек Bitcion (BTC)</div>
                         <div class="input_wrapper">
-                            <input name="btc" type="text" class="">
+                            <input name="Bitcion" type="text" value="{{ $wallet_info['Bitcion'] ?? '' }}">
                         </div>
                     </div>
                     <div class="message success">Данные сохранены</div>

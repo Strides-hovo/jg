@@ -29,9 +29,12 @@ Route::middleware(['role:user'])->prefix('user')->group( function () {
     Route::get('transfer', [UserController::class, 'transfer'])->name('user.transfer');
     Route::get('transfer-out', [UserController::class, 'transferOut'])->name('user.transfer.out');
     Route::get('wallets', [UserController::class, 'wallets'])->name('wallets');
+    Route::post('/wallets-update/{wallet_info}', [UserController::class, 'walletUpdate'])->name('wallets.update');
     Route::get('create-deposit', [UserController::class, 'createDeposit'])->name('create.deposit');
     Route::get('deposits', [UserController::class, 'deposits'])->name('deposits');
     Route::get('history', [UserController::class, 'history'])->name('history');
+
+    Route::post('/parment-insert',[\App\Http\Controllers\WalletController::class,'replenish'])->name('payment.insert');
 });
 
 

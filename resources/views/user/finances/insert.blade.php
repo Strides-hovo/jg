@@ -9,12 +9,12 @@
         <div class="content adding_content">
             <div class="wrapper_1_3">
                 <div class="wrap">
-                    <div class="name">Платежный способ Qiwi Wallet</div>
+                    <div class="name">Платежный способ Ethereum Wallet</div>
                     <div class="delay">обработка: моментально</div>
-                    <img class="pict" src="{{asset('images/pay_qiwi.svg')}}">
-                    <div class="subname">КИВИ Кошелёк</div>
+                    <img class="pict" src="{{asset('images/ethereum.svg')}}">
+                    <div class="subname">Ethereum Кошелёк</div>
                     <div class="fee">Комиссия: 0%</div>
-                    <div class="add_btn" date-payment="Qiwi" data-cur="RUB">Пополнить через Qiwi</div>
+                    <div class="add_btn" data-payment="eth" data-cur="ETH">Пополнить через Ethereum</div>
                 </div>
             </div>
             <div class="wrapper_1_3">
@@ -73,11 +73,12 @@
     <div class="modal_overlay modal_close"></div>
     <div class="modal_content">
         <div class="modal_title">Пополнение баланса<br>через <span class="payment_text">Яндекс</span></div>
-        <form action="payment" validate="">
-            <input type="hidden" id="payment_hidden" name="payment" value="Яндекс">
+        <form action="{{route('payment.insert')}}" method="post">
+            @csrf
+            <input type="hidden" id="payment_hidden" name="payment" value="">
             <div class="input_caption">Сумма пополнения</div>
             <div class="input_wrapper">
-                <input type="text" require="" id="pay" name="pay" class="num_input">
+                <input type="text" required id="pay" name="amount" class="num_input">
                 <div class="cur">RUB</div>
             </div>
             <div class="message invalid">Пожалуйста, заполните все обязательные поля</div>
@@ -85,8 +86,7 @@
             <div class="message error">Ошибка</div>
             <input type="submit" class="submit_btn" value="ПОПОЛНИТЬ БАЛАНС">
         </form>
-        <div class="modal_close">
-        </div>
+        <div class="modal_close"></div>
     </div>
 </div>
 @endsection

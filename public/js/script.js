@@ -21,47 +21,47 @@ document.addEventListener("DOMContentLoaded", function(){
 	var pageForms = document.querySelectorAll("FORM");
 	
 /* POST FORMS */
-	for (var f=0; f<pageForms.length; f++){
-		pageForms[f].addEventListener("submit", function(e){
-			e.preventDefault();
-			e.stopPropagation();
-			var actionForm = this;
-			if (this.hasAttribute("validate")){
-				var validation = validate(actionForm);
-				if (!validation) return;
-			}
-			document.body.classList.add("preload");
-			var data = new FormData(actionForm);
-			data.append("isNaked", "1");
-			data.append("userID", "1");
-			data.append("action", actionForm.getAttribute("action"));
-			var xhr = new XMLHttpRequest();
-			xhr.open("POST", "https://lfactory.artstargroup.ru/jg-server/");
-			xhr.timeout = 5000;
-			xhr.send(data);
-			xhr.ontimeout = function() {
-				console.log("error_timeout");
-				document.body.classList.remove("preload");
-				actionForm.setAttribute("data-state", "error");
-			};
-			xhr.onerror = function() {
-				console.log("error_request");
-				document.body.classList.remove("preload");
-				actionForm.setAttribute("data-state", "error");
-			};
-			xhr.onload = function() {
-				document.body.classList.remove("preload");
-				if (xhr.status != 200) {
-					console.log("error_"+xhr.status+": "+xhr.statusText);
-					actionForm.setAttribute("data-state", "error");
-				} else {
-					data = JSON.parse(xhr.response);
-					if (data.result != 1) actionForm.setAttribute("data-state", "error");
-					else actionForm.setAttribute("data-state", "success");
-				}
-			};
-		});
-	}
+	// for (var f=0; f<pageForms.length; f++){
+	// 	pageForms[f].addEventListener("submit", function(e){
+	// 		e.preventDefault();
+	// 		e.stopPropagation();
+	// 		var actionForm = this;
+	// 		if (this.hasAttribute("validate")){
+	// 			var validation = validate(actionForm);
+	// 			if (!validation) return;
+	// 		}
+	// 		document.body.classList.add("preload");
+	// 		var data = new FormData(actionForm);
+	// 		data.append("isNaked", "1");
+	// 		data.append("userID", "1");
+	// 		data.append("action", actionForm.getAttribute("action"));
+	// 		// var xhr = new XMLHttpRequest();
+	// 		// xhr.open("POST", "https://lfactory.artstargroup.ru/jg-server/");
+	// 		// xhr.timeout = 5000;
+	// 		// xhr.send(data);
+	// 		// xhr.ontimeout = function() {
+	// 		// 	console.log("error_timeout");
+	// 		// 	document.body.classList.remove("preload");
+	// 		// 	actionForm.setAttribute("data-state", "error");
+	// 		// };
+	// 		// xhr.onerror = function() {
+	// 		// 	console.log("error_request");
+	// 		// 	document.body.classList.remove("preload");
+	// 		// 	actionForm.setAttribute("data-state", "error");
+	// 		// };
+	// 		// xhr.onload = function() {
+	// 		// 	document.body.classList.remove("preload");
+	// 		// 	if (xhr.status != 200) {
+	// 		// 		console.log("error_"+xhr.status+": "+xhr.statusText);
+	// 		// 		actionForm.setAttribute("data-state", "error");
+	// 		// 	} else {
+	// 		// 		data = JSON.parse(xhr.response);
+	// 		// 		if (data.result != 1) actionForm.setAttribute("data-state", "error");
+	// 		// 		else actionForm.setAttribute("data-state", "success");
+	// 		// 	}
+	// 		// };
+	// 	});
+	// }
 	
 	var payments = document.querySelectorAll(".add_btn");
 	for (var p=0; p<payments.length; p++){
