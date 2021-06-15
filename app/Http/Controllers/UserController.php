@@ -104,9 +104,9 @@ class UserController extends Controller
         $wallet_info->user_id = Auth::user()->id;
         $wallet_info->PerfectMoney_USD = $request->PerfectMoney_USD;
         $wallet_info->PerfectMoney_EUR = $request->PerfectMoney_EUR;
-        $wallet_info->Ethereum = $request->Ethereum;
+        $wallet_info->eth = $request->eth;
         $wallet_info->Tether = $request->Tether;
-        $wallet_info->Bitcion = $request->Bitcion;
+        $wallet_info->btc = $request->btc;
         $wallet_info->save();
         return redirect()->back()->withSuccess('Данние успешно сохронилис');
     }

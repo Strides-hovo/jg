@@ -31,7 +31,7 @@
                     <div class="row">
                         <div class="input_caption">Кошелек Ethereum (ETH)</div>
                         <div class="input_wrapper">
-                            <input name="Ethereum" placeholder="0x" type="text" value="{{ $wallet_info['Ethereum'] ?? '' }}">
+                            <input name="eth" placeholder="0x" type="text" value="{{ $wallet_info['eth'] ?? '' }}">
                         </div>
                     </div>
                     <div class="row">
@@ -43,7 +43,7 @@
                     <div class="row">
                         <div class="input_caption">Кошелек Bitcion (BTC)</div>
                         <div class="input_wrapper">
-                            <input name="Bitcion" type="text" value="{{ $wallet_info['Bitcion'] ?? '' }}">
+                            <input name="btc" type="text" value="{{ $wallet_info['btc'] ?? '' }}">
                         </div>
                     </div>
                     <div class="message success">Данные сохранены</div>
