@@ -92,7 +92,7 @@
     </div>
 </div>
     <div class="modal" id="result">
-
+        <div class="modal_overlay"></div>
         <div class="modal_content">
             <div class="modal_close"></div>
             <div class="s"></div>
