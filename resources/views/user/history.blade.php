@@ -127,5 +127,34 @@
             </div>
         </div>
     </div>
+<script src="{{ asset('js/custom.js') }}"></script>
+<script>
+    function historyUpdate() {
+       setInterval( () => {
+        console.log('ok')
+          postData('POST', "{{route('payment.update')}}", {
+                '_token' : "{{ csrf_token() }}"
+            }).then((data) => {
+                
+               console.log(data)
+                
+             });
+        },10000)
+    }
+    // historyUpdate()
+
+
+        postData('POST', "{{route('payment.update')}}", {
+                '_token' : "{{ csrf_token() }}"
+            }).then((data) => {
+                
+               console.log(data)
+                
+        });
+
+
+
+
+</script>
 
 @endsection

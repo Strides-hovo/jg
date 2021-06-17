@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Notification;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\AdminController;
 use NotificationChannels\Telegram\TelegramChannel;
 use App\Notifications\Telegram;
 
@@ -16,8 +17,15 @@ Auth::routes();
 
 
 Route::middleware(['role:admin'])->prefix('admin')->group( function () {
-
+    Route::get('/', [AdminController::class, 'index'])->name('admin.panel');
+    Route::get('/user-edit/{user}', [AdminController::class, 'userEdit'])->name('admin.user.edit');
+    Route::get('/user-history', [AdminController::class, 'userHistory'])->name('admin.user.history');
+    Route::get('/user-create', [AdminController::class, 'createUser'])->name('admin.user.create');
+    Route::post('/user-store', [AdminController::class, 'storeUser'])->name('admin.user.store');
+    Route::post('/user-update/{user}', [AdminController::class, 'userUpdate'])->name('admin.user.update');
 });
+
+
 
 
 
@@ -35,6 +43,7 @@ Route::middleware(['role:user'])->prefix('user')->group( function () {
     Route::get('history', [UserController::class, 'history'])->name('history');
 
     Route::post('/parment-insert',[\App\Http\Controllers\WalletController::class,'replenish'])->name('payment.insert');
+    Route::post('/parment-update',[\App\Http\Controllers\WalletController::class,'history'])->name('payment.update');
 });
 
 

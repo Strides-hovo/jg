@@ -25,10 +25,10 @@ class RedirectIfAuthenticated
             if (Auth::guard($guard)->check()) {
                 // return redirect(RouteServiceProvider::HOME);
                 if(auth()->user()->hasRole('admin')){
-                    return redirect()->route('admin');
+                    return redirect()->route('admin.panel');
                 }
                 if(auth()->user()->hasRole('manager')){
-                    return redirect()->route('manager');
+                    return redirect()->route('manager.panel');
                 }
                 if(auth()->user()->hasRole('user')){
                     return redirect()->route('user.panel');

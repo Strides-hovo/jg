@@ -99,7 +99,7 @@
         </div>
     </div>
 @endsection
-
+ 
 @section('script')
     <script src="{{asset('js/custom.js')}}"></script>
     <script>
@@ -133,7 +133,6 @@
                 form.classList.remove('active');
                 result.classList.add('active');
              });
-
         };
 
     </script>
