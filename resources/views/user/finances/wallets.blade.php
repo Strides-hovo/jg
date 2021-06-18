@@ -14,32 +14,14 @@
                 </div>
                 <form class="wallets_form" action="{{ route('wallets.update',$wallet_info )}}" method="post">
                     @csrf
-                    <div class="row cols clearfix">
-                        <div class="col">
-                            <div class="input_caption">Кошелёк PerfectMoney USD</div>
-                            <div class="input_wrapper">
-                                <input name="PerfectMoney_USD" placeholder="U00000000" type="text" value="{{ $wallet_info['PerfectMoney_USD'] ?? '' }}">
-                            </div>
-                        </div>
-                        <div class="col">
-                            <div class="input_caption">Кошелек PerfectMoney EUR</div>
-                            <div class="input_wrapper">
-                                <input name="PerfectMoney_EUR" placeholder="E00000000" type="text" value="{{ $wallet_info['PerfectMoney_EUR'] ?? '' }}">
-                            </div>
-                        </div>
-                    </div>
+                    
                     <div class="row">
                         <div class="input_caption">Кошелек Ethereum (ETH)</div>
                         <div class="input_wrapper">
                             <input name="eth" placeholder="0x" type="text" value="{{ $wallet_info['eth'] ?? '' }}">
                         </div>
                     </div>
-                    <div class="row">
-                        <div class="input_caption">Кошелёк Tether (USDT)</div>
-                        <div class="input_wrapper">
-                            <input name="Tether" type="text" value="{{ $wallet_info['Tether'] ?? '' }}">
-                        </div>
-                    </div>
+                    
                     <div class="row">
                         <div class="input_caption">Кошелек Bitcion (BTC)</div>
                         <div class="input_wrapper">

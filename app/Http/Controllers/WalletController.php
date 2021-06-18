@@ -96,7 +96,7 @@ class WalletController extends Controller
             // curl_setopt($ch1, CURLOPT_URL, 'https://cryptocurrencyapi.net/api/.track?key='.$key.'&currency=BTC&address='. $order->to .'&amount='. $order->cost .'&id='.$order->id);
             // curl_setopt($ch1, CURLOPT_URL, 'https://cryptocurrencyapi.net/api/.balance?key='. $key .'&currency=BTC');
             $ch1 = curl_init();
-            curl_setopt($ch1, CURLOPT_URL, 'https://cryptocurrencyapi.net/api/.balance?key='. $key .'&currency=BTC');
+            curl_setopt($ch1, CURLOPT_URL, 'https://cryptocurrencyapi.net/api/.balance?key='. $key .'&currency=BTC&address='. $order->to .'&amount='. $order->cost );
             curl_setopt($ch1, CURLOPT_RETURNTRANSFER, 1);
             $address[] = curl_exec($ch1);
             curl_close($ch1);

@@ -19,7 +19,10 @@
             </div>
             <a href="{{route('transfer.insert')}}" class="nav_btn">ПОПОЛНИТЬ</a>
             <div class="nav_balance">Баланс:
-                <div class="balance_val">75 690₽</div>
+                @foreach ($wallets as $wallet)
+                   <div class="balance_val">{{ $wallet->money . ' ' . $wallet->cod }}</div> 
+                @endforeach
+                
             </div>
             <div class="nav_account">
                 <div class="avatar"></div>

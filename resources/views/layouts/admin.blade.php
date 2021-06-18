@@ -24,7 +24,7 @@
 		@include('admin.saidbar')
 
 		@include('admin.header')
-
+		@include('admin.messages')
 		@yield('content')
 	</section>
 

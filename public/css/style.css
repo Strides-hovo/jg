@@ -612,3 +612,13 @@ form.form-horizontal {
 	display: flex;
 	align-items: flex-end;
 }
+
+.alert.alert-success {
+    position: absolute;
+    z-index: 999;
+    top: 8px;
+    width: 100%;
+    background: green;
+    color: #fff;
+    padding: 25px 15px;
+}

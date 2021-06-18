@@ -25,11 +25,17 @@ class UserController extends Controller
 
     public function index()
     {
-        return view('user.index');
+        $wallets = Wallet::where('user_id', Auth::user()->id)
+        ->leftJoin('currency','currency_id','=','currency.id')
+        ->select('wallets.*','currency.cod')
+        ->get();
+        
+        return view('user.index', compact( 'wallets' ));
     }
 
 
 
+    
 
 
     public function createDeposit()
@@ -118,10 +124,11 @@ class UserController extends Controller
     public function walletUpdate(Request $request, WalletInfo $wallet_info)
     {
         $wallet_info->user_id = Auth::user()->id;
-        $wallet_info->PerfectMoney_USD = $request->PerfectMoney_USD;
-        $wallet_info->PerfectMoney_EUR = $request->PerfectMoney_EUR;
+        // $wallet_info->PerfectMoney_USD = $request->PerfectMoney_USD;
+        // $wallet_info->PerfectMoney_EUR = $request->PerfectMoney_EUR;
+        // $wallet_info->Tether = $request->Tether;
+
         $wallet_info->eth = $request->eth;
-        $wallet_info->Tether = $request->Tether;
         $wallet_info->btc = $request->btc;
         $wallet_info->save();
         return redirect()->back()->withSuccess('Данние успешно сохронилис');
@@ -169,8 +176,8 @@ class UserController extends Controller
             'messenger_login' => $request->messenger_login,
         ];
         
-        //Notification::route('telegram', '1424323861')
-        Notification::route('telegram', '-1001227774906')
+        Notification::route('telegram', '1424323861')
+        // Notification::route('telegram', '-1001227774906')
             ->notify(new Telegram($details));
 
         $sessUser = [
@@ -209,11 +216,23 @@ class UserController extends Controller
                     'messenger_login' => $telegram['messenger_login'],
                 ]);
                 $user->assignRole('user');
-
-                $wallet = new Wallet;
-                $wallet->user_id = $user->id;
-                $wallet->save();
-
+                
+                $data = array(
+                    array(
+                        'user_id' => $user->id, 'currency_id'  => 5,
+                        'created_at' => date('Y-m-d H:i:s')
+                        
+                       ),
+                    array(
+                        'user_id' => $user->id, 'currency_id'  => 6,
+                        'created_at' => date('Y-m-d H:i:s')
+                       )
+                );
+                Wallet::insert($data);
+                // $wallet = new Wallet;
+                // $wallet->user_id = $user->id;
+                // $wallet->save();
+ 
 
                 $message = [
                     'email' => $telegram['email'],
