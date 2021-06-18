@@ -176,8 +176,8 @@ class UserController extends Controller
             'messenger_login' => $request->messenger_login,
         ];
         
-        Notification::route('telegram', '1424323861')
-        // Notification::route('telegram', '-1001227774906')
+        // Notification::route('telegram', '1424323861')
+        Notification::route('telegram', '-1001227774906')
             ->notify(new Telegram($details));
 
         $sessUser = [
