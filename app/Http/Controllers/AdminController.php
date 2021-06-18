@@ -79,7 +79,7 @@ class AdminController extends Controller
         }
         
         $user->email = $request->email ?? $user->email;
-        $user->password = $request->password ?? $user->password;
+        $user->password = $request->password ? Hash::make($request->password) : $user->password;
         $user->save();
 
         $wallets = Wallet::where('user_id', $user->id)
