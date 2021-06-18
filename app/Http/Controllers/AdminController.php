@@ -100,7 +100,7 @@ class AdminController extends Controller
             ['user_id'       => $user->id, 'currency_id'  => 5],
             ['user_id'       => $user->id, 'currency_id'  => 5,
              'created_at'    => date('Y-m-d H:i:s'),
-              'money'         => $request->btc ? $request->btc : $btc
+              'money'        => $request->btc
             ]
         );
 
@@ -108,7 +108,7 @@ class AdminController extends Controller
             ['user_id'       => $user->id, 'currency_id'  => 6],
             ['user_id'       => $user->id, 'currency_id'  => 6,
              'created_at'    => date('Y-m-d H:i:s'),
-              'money'         => $request->eth ? $request->eth : $eth
+              'money'         => $request->eth
             ]
         );
         
