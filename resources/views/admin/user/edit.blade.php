@@ -11,12 +11,12 @@
 		@csrf
 		<div class="form-group">
 			<label>баланс ETH
-				<input type="text" class="form-control" value="{{ $wallets->where('cod','eth')[0]->money ?? 0 }}" name="eth">
+				<input type="text" class="form-control" value="{{ $wallets->where('cod','eth')->first()->money ?? 0 }}" name="eth">
 			</label>
 		</div>
 		<div class="form-group">
 			<label>баланс BTC
-				<input type="text" class="form-control" name="btc" value="{{ $wallets->where('cod','btc')[1]->money ?? 0 }}">
+				<input type="text" class="form-control" name="btc" value="{{ $wallets->where('cod','btc')->first()->money ?? 0 }}">
 			</label>
 		</div>
 		<div class="form-group">
