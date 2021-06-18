@@ -89,8 +89,8 @@ class AdminController extends Controller
 
 
         
-        $btc = Wallet::where('currency_id',5)->first()->money;
-        $eth = Wallet::where('currency_id',6)->first()->money;
+        $btc = Wallet::where('currency_id',5)->first()->money ?? 0;
+        $eth = Wallet::where('currency_id',6)->first()->money ?? 0;
 
 
 
